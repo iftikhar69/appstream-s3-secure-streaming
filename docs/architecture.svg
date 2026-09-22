@@ -1,0 +1,46 @@
+<svg width="1000" height="320" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="100%" stop-color="#121a2b"/>
+    </linearGradient>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="320" fill="url(#bg3)"/>
+  <text x="500" y="38" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="bold" fill="#f8fafc">Architecture: Secure Read-Only Storage Access</text>
+
+  <!-- User -->
+  <rect x="40" y="130" width="140" height="80" rx="8" fill="#1c2436" stroke="#2d3a52" stroke-width="1.5"/>
+  <text x="110" y="165" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0">User</text>
+  <text x="110" y="185" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="11" fill="#94a3b8">streaming session</text>
+
+  <line x1="180" y1="170" x2="260" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- AppStream stack -->
+  <rect x="260" y="120" width="220" height="100" rx="8" fill="#0f2a20" stroke="#34d399" stroke-width="1.5"/>
+  <text x="370" y="155" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="bold" fill="#6ee7b7">AppStream 2.0</text>
+  <text x="370" y="175" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="12" fill="#a7f3d0">web-app-stack</text>
+  <text x="370" y="195" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="11" fill="#6b8f7f">assumes AppStreamInstanceRole</text>
+
+  <line x1="480" y1="170" x2="560" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="520" y="155" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#64748b">IAM role</text>
+
+  <!-- IAM guardrail -->
+  <rect x="560" y="90" width="180" height="160" rx="8" fill="#1c2436" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="650" y="118" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="bold" fill="#67e8f9">Least-Privilege Policy</text>
+  <text x="650" y="145" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a5f3fc">GetObject → allow</text>
+  <text x="650" y="165" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a5f3fc">ListBucket → allow</text>
+  <text x="650" y="190" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#fca5a5">PutObject → deny</text>
+  <text x="650" y="210" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#fca5a5">DeleteObject → deny</text>
+
+  <line x1="740" y1="170" x2="820" y2="170" stroke="#64748b" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- S3 bucket -->
+  <rect x="820" y="130" width="140" height="80" rx="8" fill="#1c2436" stroke="#2d3a52" stroke-width="1.5"/>
+  <text x="890" y="165" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">S3 Bucket</text>
+  <text x="890" y="185" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="10" fill="#94a3b8">SSE-S3 encrypted</text>
+
+  <text x="500" y="280" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="12" fill="#64748b">The role can read app assets from S3, but write and delete are explicitly denied — a compromised or misbehaving session can never modify or destroy stored data.</text>
+</svg>

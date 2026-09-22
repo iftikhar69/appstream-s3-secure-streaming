@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAppStreamServiceToAssumeRole",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "appstream.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
